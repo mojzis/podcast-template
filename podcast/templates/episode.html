@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ ep.title }} · {{ show.title }}{% endblock %}
+{% block description %}{{ ep.summary }}{% endblock %}
+{% block content %}
+    <article>
+      <h1>{{ ep.number }}. {{ ep.title }}</h1>
+      <p class="meta"><time datetime="{{ ep.published.date().isoformat() }}">{{ ep.published.date().isoformat() }}</time> · {{ ep.audio.seconds | clock }}
+{% if ep.readers %}
+        · read by {{ ep.readers | join(", ") }}
+{% endif %}
+      </p>
+      <audio controls preload="none" src="{{ root }}audio/{{ ep.audio.path.name }}"></audio>
+      <p><a href="{{ root }}audio/{{ ep.audio.path.name }}" download>Download mp3</a></p>
+      <div class="notes">
+{{ ep.notes_html | safe }}
+      </div>
+{% if ep.transcript is not none %}
+      <details class="transcript">
+        <summary>Transcript</summary>
+        <pre>{{ ep.transcript }}</pre>
+        <p><a href="transcript.txt">Plain text</a></p>
+      </details>
+{% endif %}
+    </article>
+{% endblock %}

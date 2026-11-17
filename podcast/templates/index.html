@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="show">
+      <img src="{{ cover }}" alt="{{ show.title }} cover art" width="240" height="240">
+      <div>
+        <h1>{{ show.title }}</h1>
+{% if show.subtitle %}
+        <p class="subtitle">{{ show.subtitle }}</p>
+{% endif %}
+        <p>{{ show.description }}</p>
+      </div>
+    </section>
+    <h2>Episodes</h2>
+{% for ep in episodes %}
+    <article>
+      <h3><a href="episodes/{{ ep.slug }}/">{{ ep.number }}. {{ ep.title }}</a></h3>
+      <p class="meta"><time datetime="{{ ep.published.date().isoformat() }}">{{ ep.published.date().isoformat() }}</time> · {{ ep.audio.seconds | clock }}</p>
+      <p>{{ ep.summary }}</p>
+    </article>
+{% else %}
+    <p>The first episode is on its way.</p>
+{% endfor %}
+{% endblock %}

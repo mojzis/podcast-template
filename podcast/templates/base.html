@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ show.language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ show.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ show.description }}{% endblock %}">
+  <link rel="stylesheet" href="{{ root }}style.css">
+  <link rel="icon" href="{{ root }}{{ cover }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ show.title }}" href="{{ show.base_url }}{{ feed }}">
+</head>
+<body>
+  <header><a href="{{ root }}"><img src="{{ root }}{{ cover }}" alt="" width="64" height="64">{{ show.title }}</a></header>
+  <main>
+{% block content %}{% endblock %}
+  </main>
+  <footer>
+    <p class="listen">
+      Listen: <a href="{{ show.base_url }}{{ feed }}">RSS feed</a>
+{% for link in show.links %}
+      · <a href="{{ link.url }}">{{ link.name }}</a>
+{% endfor %}
+    </p>
+    <p>{{ copyright }}</p>
+  </footer>
+</body>
+</html>

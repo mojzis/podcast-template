@@ -1,0 +1,19 @@
+# Everything about the show. `podcast guide tune` explains each key.
+
+[show]
+title = "My Podcast"
+description = "What the show is about, in a sentence or two."
+author = "Your Name"
+email = "you@example.com"   # itunes:owner -- Apple and Spotify send verification mail here
+base_url = "https://example.github.io/my-podcast/"   # where the site is served
+language = "en"
+category = "Technology"   # an Apple Podcasts category
+subcategory = ""
+explicit = false
+type = "episodic"   # or "serial"
+cover = "cover.png"   # square JPEG or PNG, 1400-3000 px
+
+# Where else people can listen. Add these once the directories list you.
+# [[links]]
+# name = "Apple Podcasts"
+# url = "https://podcasts.apple.com/..."
