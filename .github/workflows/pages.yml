@@ -22,6 +22,8 @@ concurrency:
 
 jobs:
   deploy:
+    # The template repository itself has no show to publish; repos made from it do.
+    if: github.repository != 'mojzis/podcast-template'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
